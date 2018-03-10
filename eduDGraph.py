@@ -49,7 +49,7 @@ class eduDGraph:
         for each in self.mst.edges():
             valDict[each] = "%s\n%.3f" % (relDict[each], probDict[each])
         # Draw the mst properly
-        fig = plt.figure(figsize=(8, 8))
+        fig = plt.figure(figsize=(16, 16))
         plt.suptitle("Discourse tree for " + self.gName)
         gs = gridspec.GridSpec(3, 1)
         ax1 = plt.subplot(gs[0:2])
