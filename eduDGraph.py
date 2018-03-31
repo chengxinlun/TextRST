@@ -51,12 +51,15 @@ class eduDGraph:
         # Draw the mst properly
         fig = plt.figure(figsize=(16, 16))
         plt.suptitle("Discourse tree for " + self.gName)
+        '''
         gs = gridspec.GridSpec(3, 1)
         ax1 = plt.subplot(gs[0:2])
+        '''
         pos = nx.drawing.nx_agraph.graphviz_layout(self.mst, prog='dot')
         nx.draw(self.mst, pos, with_labels=True, arrows=True)
         nx.draw_networkx_edge_labels(self.mst, pos, valDict)
         plt.draw()
+        '''
         ax2 = plt.subplot(gs[2])
         ax2.axis('off')
         caption = ""
@@ -64,6 +67,7 @@ class eduDGraph:
             caption = caption + str(each[0]) + ": " + each[1]['edu'] + "\n"
         plt.text(0.0, 0.0, caption, ha='left', wrap=True,
                  transform=ax2.transAxes)
+        '''
         if show:
             plt.show()
         else:

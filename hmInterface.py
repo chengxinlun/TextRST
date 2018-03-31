@@ -15,17 +15,17 @@ def loadDiscTree(fName):
         treeList = treeList[1:]
     if treeList[-1]['text'].strip() == '':
         treeList = treeList[:-1]
-    print(treeList)
     # Reconstruct the nodes
     g = eduDGraph(fName, [])
     for each in treeList:
+        if each['text'].strip() == '':
+            continue
         g.diGraph.add_node(each['id'] - 1, edu=each['text'].strip('\r'))
     # Reconstruct the edges
     for each in treeList:
-        if each['parent'] == 0:
+        if each['parent'] == 0 or each['text'].strip() == '':
             continue
         else:
             g.diGraph.add_edge(each['parent'] - 1, each['id'] - 1, weight=1.0,
                                relation=each['relation'])
-    print(g.diGraph.nodes())
     return g
