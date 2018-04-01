@@ -5,9 +5,8 @@
 
 * networkx
 
-  ​
 
-  Prefavorably Python 3.x, though it might be able to run on Python 2.7.x.
+Python 3.x is recommended, though it might be able to run on Python 2.7.x.
 
 ## Usage
 
