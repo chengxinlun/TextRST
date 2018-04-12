@@ -20,12 +20,12 @@ def loadDiscTree(fName):
     for each in treeList:
         if each['text'].strip() == '':
             continue
-        g.diGraph.add_node(each['id'] - 1, edu=each['text'].strip('\r'))
+        g.diGraph.add_node(each['id'], edu=each['text'].strip('\r'))
     # Reconstruct the edges
     for each in treeList:
         if each['parent'] == 0 or each['text'].strip() == '':
             continue
         else:
-            g.diGraph.add_edge(each['parent'] - 1, each['id'] - 1, weight=1.0,
+            g.diGraph.add_edge(each['parent'], each['id'], weight=1.0,
                                relation=each['relation'])
     return g
