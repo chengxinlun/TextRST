@@ -27,12 +27,16 @@ g = loadDiscTree("../RST_Annotation_Results_180305/HuangQiushi/A2_HQS_FLTRP_2013
 g.parse(show=False, fName='test_HQS_A2.png')
 g = loadDiscTree("../RST_Annotation_Results_180305/HuangQiushi/B1_HQS_FLTRP_2013_A_022_OSPL.txt.edu.dep")
 g.parse(show=False, fName='test_HQS_B1.png')
-'''
-depList = glob.glob("../RST_annotation_results/RST_5/HQS/*.dep")
-for each in depList:
-    g = loadDiscTree(each)
-    g.parse(show=False, fName=each.split(".dep")[0] + ".png")
 depList = glob.glob("../RST_annotation_results/RST_5/ZH/*.dep")
 for each in depList:
     g = loadDiscTree(each)
     g.parse(show=False, fName=each.split(".dep")[0] + ".png")
+depList = glob.glob("../RST_annotation_results/RST_5/HQS/*.dep")
+for each in depList:
+    g = loadDiscTree(each)
+    g.parse(show=False, fName=each.split(".dep")[0] + ".png")
+'''
+depFile = "../RST_annotation_results/RST_5/HQS/HQS_A1_FLTRP_2013_A_027_OSPL.txt.edu.dep"
+g = loadDiscTree(depFile)
+g.parse(show=True)
+g.ngram(3)
