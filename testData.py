@@ -36,7 +36,3 @@ for each in depList:
     g = loadDiscTree(each)
     g.parse(show=False, fName=each.split(".dep")[0] + ".png")
 '''
-depFile = "../RST_annotation_results/RST_5/HQS/HQS_A1_FLTRP_2013_A_027_OSPL.txt.edu.dep"
-g = loadDiscTree(depFile)
-g.parse(show=True)
-g.ngram(3)
