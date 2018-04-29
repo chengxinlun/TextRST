@@ -35,11 +35,13 @@ class eduDGraph:
                                     self.diGraph.nodes[j]['edu'])
                 self.diGraph.add_edge(i, j, weight=prob, relation=res)
 
-    def parse(self, show=False, fName=None):
+    def parse(self, doPlot=True, show=False, fName=None):
         # Parse the most probable RST of the give text with maximum spanning
         # tree
         tmp = nx.algorithms.tree.branchings.Edmonds(self.diGraph)
         self.mst = tmp.find_optimum()
+        if not doPlot:
+            return
         # Copy the attributes and put them into formatted labels
         # probDict = nx.get_edge_attributes(self.diGraph, 'weight')
         relDict = nx.get_edge_attributes(self.diGraph, 'relation')
@@ -47,15 +49,16 @@ class eduDGraph:
         for each in self.mst.edges():
             valDict[each] = "%s" % (relDict[each])
         # Draw the mst properly
-        fig = plt.figure(figsize=(32, 20))
+        fig = plt.figure(figsize=(16, 20))
         plt.suptitle("Discourse tree for " + self.gName)
-        gs = gridspec.GridSpec(1, 2)
-        ax1 = plt.subplot(gs[0])
+        # gs = gridspec.GridSpec(1, 2)
+        # ax1 = plt.subplot(gs[0])
         pos = nx.drawing.nx_agraph.graphviz_layout(self.mst, prog='dot')
         # Node labels
         nx.draw(self.mst, pos, with_labels=True, arrows=True)
         nx.draw_networkx_edge_labels(self.mst, pos, valDict)
         plt.draw()
+        '''
         ax2 = plt.subplot(gs[1])
         ax2.axis('off')
         caption = ""
@@ -63,6 +66,7 @@ class eduDGraph:
             caption = caption + str(each[0]) + ": " + each[1]['edu'] + "\n"
         plt.text(0.0, 0.0, caption, ha='left', wrap=True,
                  transform=ax2.transAxes)
+        '''
         if show:
             plt.show()
         else:
